@@ -56,34 +56,38 @@
 }
 
 -(void)setupAuxiliaryButtons{
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:2];
-    UIButton *forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    UIButton *forwardButton = [self buildAuxiliaryButton];
     forwardButton.accessibilityLabel = @"Scroll Forward";
     [forwardButton setTitle: @"\u2329" forState: UIControlStateNormal];
-    forwardButton.accessibilityTraits = forwardButton.accessibilityTraits | UIAccessibilityTraitStartsMediaSession;
-    forwardButton.backgroundColor = [UIColor colorWithWhite:0.7f alpha:0.7];
     [forwardButton addTarget:self action:@selector(forwardButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:forwardButton];
     forwardButton.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(forwardButton);
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[forwardButton]-0-|" options:0 metrics:nil views:viewsDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[forwardButton(50)]" options:0 metrics:nil views:viewsDictionary]];
-    [array addObject:forwardButton];
-    
-    UIButton *backwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    NSDictionary *forwardViewsDictionary = NSDictionaryOfVariableBindings(forwardButton);
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[forwardButton]-0-|" options:0 metrics:nil views:forwardViewsDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[forwardButton(50)]" options:0 metrics:nil views:forwardViewsDictionary]];
+
+    UIButton *backwardButton = [self buildAuxiliaryButton];
     backwardButton.accessibilityLabel = @"Scroll Backward";
-    backwardButton.accessibilityTraits = backwardButton.accessibilityTraits | UIAccessibilityTraitStartsMediaSession;
     [backwardButton setTitle: @"\u232a" forState: UIControlStateNormal];
-    backwardButton.backgroundColor = [UIColor colorWithWhite:0.7f alpha:0.7];
     [backwardButton addTarget:self action:@selector(backwardButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backwardButton];
     backwardButton.translatesAutoresizingMaskIntoConstraints = NO;
-    viewsDictionary = NSDictionaryOfVariableBindings(backwardButton);
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[backwardButton]-0-|" options:0 metrics:nil views:viewsDictionary]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[backwardButton(50)]-0-|" options:0 metrics:nil views:viewsDictionary]];
-    [array addObject:backwardButton];
-    
-    self.auxiliaryButtons = array;
+    NSDictionary *backwardViewsDictionary = NSDictionaryOfVariableBindings(backwardButton);
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[backwardButton]-0-|" options:0 metrics:nil views:backwardViewsDictionary]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[backwardButton(50)]-0-|" options:0 metrics:nil views:backwardViewsDictionary]];
+
+    self.auxiliaryButtons = @[forwardButton, backwardButton];
+}
+
+- (UIButton*)buildAuxiliaryButton {
+    UIButton *auxiliaryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [auxiliaryButton.titleLabel setFont:[UIFont boldSystemFontOfSize:40]];
+    [auxiliaryButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [auxiliaryButton setBackgroundColor:[UIColor colorWithWhite:0.7f alpha:0.7]];
+    [auxiliaryButton.layer setCornerRadius:4];
+    [auxiliaryButton setClipsToBounds:YES];
+    return auxiliaryButton;
 }
 
 -(void)forwardButtonTapped:(id)sender{
@@ -109,7 +113,7 @@
     if([self.delegate respondsToSelector:@selector(accessibilityAnnoucement:isForwarded:)]){
         announcement = [self.delegate accessibilityAnnoucement:index isForwarded:forwarded];
     }
-    announcement = announcement ? announcement: [NSString stringWithFormat:@"Item %ld", (long) index];
+    announcement = announcement ? announcement: [NSString stringWithFormat:@"Item %ld", (long) (index + 1)];
     return announcement;
 }
 

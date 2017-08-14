@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		821507391E5746F000C75711 /* iCarousel.h in Headers */ = {isa = PBXBuildFile; fileRef = 821507371E5746F000C75711 /* iCarousel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8215073A1E5746F000C75711 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 821507381E5746F000C75711 /* iCarousel.m */; };
+		DCC4DED81F3D4F2C007992E9 /* iCarousel+AccessibilityScrolling.m in Headers */ = {isa = PBXBuildFile; fileRef = DCC4DED61F3D4F2B007992E9 /* iCarousel+AccessibilityScrolling.m */; };
+		DCC4DED91F3D4F2C007992E9 /* iCarousel+AccessiblityButtons.m in Headers */ = {isa = PBXBuildFile; fileRef = DCC4DED71F3D4F2B007992E9 /* iCarousel+AccessiblityButtons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +19,10 @@
 		821507371E5746F000C75711 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		821507381E5746F000C75711 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		821507421E57475B00C75711 /* iCarousel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iCarousel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC4DED41F3D4F2B007992E9 /* iCarousel+AccessiblityButtons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCarousel+AccessiblityButtons.h"; sourceTree = "<group>"; };
+		DCC4DED51F3D4F2B007992E9 /* iCarousel+AccessibilityScrolling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCarousel+AccessibilityScrolling.h"; sourceTree = "<group>"; };
+		DCC4DED61F3D4F2B007992E9 /* iCarousel+AccessibilityScrolling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iCarousel+AccessibilityScrolling.m"; sourceTree = "<group>"; };
+		DCC4DED71F3D4F2B007992E9 /* iCarousel+AccessiblityButtons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "iCarousel+AccessiblityButtons.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,10 @@
 			children = (
 				821507371E5746F000C75711 /* iCarousel.h */,
 				821507381E5746F000C75711 /* iCarousel.m */,
+				DCC4DED51F3D4F2B007992E9 /* iCarousel+AccessibilityScrolling.h */,
+				DCC4DED61F3D4F2B007992E9 /* iCarousel+AccessibilityScrolling.m */,
+				DCC4DED41F3D4F2B007992E9 /* iCarousel+AccessiblityButtons.h */,
+				DCC4DED71F3D4F2B007992E9 /* iCarousel+AccessiblityButtons.m */,
 				8215073B1E5746F400C75711 /* Supporting Files */,
 			);
 			path = iCarousel;
@@ -79,6 +89,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCC4DED91F3D4F2C007992E9 /* iCarousel+AccessiblityButtons.m in Headers */,
+				DCC4DED81F3D4F2C007992E9 /* iCarousel+AccessibilityScrolling.m in Headers */,
 				821507391E5746F000C75711 /* iCarousel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +416,7 @@
 				821507491E57475B00C75711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
