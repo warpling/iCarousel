@@ -173,6 +173,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel;
 - (UIView *)carousel:(iCarousel *)carousel placeholderViewAtIndex:(NSInteger)index reusingView:(nullable UIView *)view;
+- (void)carousel:(iCarousel *)carousel didAddSubview:view;
 
 @end
 

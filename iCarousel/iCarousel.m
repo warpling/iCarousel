@@ -1273,10 +1273,10 @@ NSComparisonResult compareViewDepth(UIView *view1, UIView *view2, iCarousel *sel
         [_contentView addSubview:[self containView:view]];
     }
     view.superview.layer.opacity = 0.0;
+    [_dataSource carousel:self didAddSubview:view];
     [self transformItemView:view atIndex:index];
-    
     [self popAnimationState];
-    
+
     return view;
 }
 
